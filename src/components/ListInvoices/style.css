@@ -1,0 +1,8 @@
+.table-product .show-hover{
+    opacity:0;
+    transition: .4s;
+}
+
+.table-product tr:hover .show-hover{
+    opacity:1;
+}
