@@ -37,7 +37,7 @@ Products.propTypes = propTypes;
 function mapStateToProps(state) {
     return {
         title: state.title,
-        "products": state.products
+        products: state.products
     };
 }
 

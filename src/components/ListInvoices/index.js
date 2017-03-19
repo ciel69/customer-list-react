@@ -1,3 +1,3 @@
-import TableProduct from './TableInvoice';
+import TableInvoice from './TableInvoice';
 
-export default TableProduct;
+export default TableInvoice;

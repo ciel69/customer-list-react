@@ -15,7 +15,7 @@ import {
     EDIT_INVOICES_REQUEST,
     EDIT_INVOICES_SUCCESS,
     EDIT_INVOICES_FAIL
-} from '../constants/INVOICES';
+} from '../constants/Invoices';
 
 //get list Invoices
 function requestGetInvoices() {
@@ -194,7 +194,7 @@ export function editInvoices(id, creds) {
                 'X-Requested-With': 'XMLHttpRequest'
             },
             credentials: 'same-origin',
-            body: `name=${creds.name}&price=${creds.price}`
+            body: `customer_id=${creds.customer_id}&discount=${creds.discount}&total=${creds.total}`
         })
             .then(response => response.json())
             .then(json => dispatch(successEditInvoices(json)))

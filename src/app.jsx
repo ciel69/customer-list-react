@@ -4,6 +4,8 @@ import {browserHistory, Router} from 'react-router';
 import {Provider} from 'react-redux';
 import routes from './routes';
 import configureStore from './store/configureStore';
+import {fetchInvoices} from './actions/InvoicesActions';
+import {fetchCustomers} from './actions/CustomerActions';
 
 import 'react-select/dist/react-select.css';
 const store = configureStore();

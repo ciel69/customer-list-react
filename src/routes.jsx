@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Customers from './components/Customers';
 import Products from './components/Products';
 import Invoices from './components/Invoices';
+import EditInvoice from './components/EditInvoice';
 
 
 let store;
@@ -18,7 +19,7 @@ export default function routes(storeRef) {
             <Route component={Customers} path='customers'/>
             <Route component={Products} path='products'/>
             <Route component={Invoices} path='invoices'/>
-            {/*<Route component={InvoicesItem} path='products/:id'/>*/}
+            <Route component={EditInvoice} path='invoices/:id'/>
         </Route>
     );
 }

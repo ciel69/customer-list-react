@@ -4,7 +4,9 @@ import {updateTitle} from 'redux-title';
 import {fetchInvoices} from '../../actions/InvoicesActions';
 import {fetchCustomers} from '../../actions/CustomerActions';
 import ListInvoices from '../ListInvoices';
-import {ModalCreateInvoices} from '../Modals';
+import {ModalDeleteInvoice} from '../Modals';
+import {createInvoices} from '../../actions/InvoicesActions';
+import {browserHistory} from 'react-router';
 
 const propTypes = {
     dispatch: PropTypes.func,
@@ -15,20 +17,36 @@ const propTypes = {
 class Invoices extends React.Component {
 
     componentDidMount() {
-        const { dispatch } = this.props;
+        const {dispatch} = this.props;
         dispatch(fetchCustomers());
         dispatch(fetchInvoices());
         dispatch(updateTitle("Invoices list"));
     }
 
+    createInvoice() {
+        const {dispatch, invoices} = this.props;
+        const creds = {customer_id: '', discount: ''};
+
+        let promise = new Promise((resolve, reject) => {
+            resolve(dispatch(createInvoices(creds)));
+        });
+        return (promise.then(result => {
+            browserHistory.push(`/invoices/${result.json.id}`);
+        }));
+
+    }
+
     render() {
-        const { invoices } = this.props;
+        const {invoices} = this.props;
         return (
             <div>
                 <h1>Invoices list</h1>
-                <ModalCreateInvoices/>
+                {/*<ModalCreateInvoices/>*/}
+                <button className='btn btn-primary' onClick={() => this.createInvoice()}>
+                    Create Customer
+                </button>
                 <ListInvoices list={invoices.data}/>
-                {/*<ModalDeleteinvoices deleteinvoicesId={invoices.queue_delete}/>*/}
+                <ModalDeleteInvoice deleteInvoiceId={invoices.queue_delete}/>
                 {/*<ModalEditProduct product={invoices.queue_edit}/>*/}
             </div>
         );

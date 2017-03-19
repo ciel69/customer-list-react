@@ -1,8 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
-import {openModal, closeModal} from '../../actions/ModalsActions';
-import {addQueueInvoicesDelete, addQueueInvoicesEdit} from '../../actions/InvoicesActions';
+import {openModal} from '../../actions/ModalsActions';
+import {addQueueInvoicesDelete} from '../../actions/InvoicesActions';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
 
 const propTypes = {
     dispatch: PropTypes.func,
@@ -13,26 +14,26 @@ const propTypes = {
 class ItemProduct extends React.Component {
 
     listElement(invoice) {
-        const { dispatch, customers } = this.props;
+        const {dispatch, customers} = this.props;
         return invoice.map((element, i) => {
             let customer = customers.data.filter(data => data.id == element.customer_id);
+            customer = customer[0] || {name: ''};
             return (
                 <tr key={i}>
                     <td>{element.id}</td>
-                    <td>{customer[0].name}</td>
+                    <td>{customer.name}</td>
                     <td>{element.discount}</td>
                     <td>{element.total}</td>
                     <td>
                         <ButtonToolbar className="show-hover">
-                            <button className='btn btn-link' onClick={() => {
-                                dispatch(addQueueInvoicesEdit(element.id));
-                                dispatch(openModal('editProduct'))
-                            }}>
-                                Edit
-                            </button>
+                            <LinkContainer to={"/invoices/" + element.id}>
+                                <button className='btn btn-link'>
+                                    Edit
+                                </button>
+                            </LinkContainer>
                             <button className='btn btn-link' onClick={() => {
                                 dispatch(addQueueInvoicesDelete(element.id));
-                                dispatch(openModal('deleteProduct'))
+                                dispatch(openModal('deleteInvoice'))
                             }}>
                                 Delete
                             </button>

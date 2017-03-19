@@ -51,7 +51,7 @@ class FormCreateInvoices extends React.Component {
                 <FormGroup controlId="formControlsSelectMultiple">
                     <ControlLabel>Customer</ControlLabel>
                     <FormControl ref="customer" componentClass="select">
-                        <option value="select">select customer</option>
+                        <option>select customer</option>
                         {this.listCustomers()}
                     </FormControl>
                 </FormGroup>
@@ -61,7 +61,7 @@ class FormCreateInvoices extends React.Component {
                         Discount
                     </Col>
                     <Col sm={10}>
-                        <FormControl ref="discount" name="discount" type="text" placeholder="Discount" required=""/>
+                        <FormControl ref="discount" name="discount" type="text" placeholder="Discount" />
                     </Col>
                 </FormGroup>
 

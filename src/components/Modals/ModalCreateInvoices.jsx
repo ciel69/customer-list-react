@@ -31,7 +31,7 @@ class ModalCreateInvoices extends React.Component {
         return (
             <div>
                 <button className='btn btn-primary' onClick={() => dispatch(openModal(nameModal))}>
-                    Create Customer
+                    Create Invoice
                 </button>
                 <Modal isOpen={isOpen} onRequestHide={() => dispatch(closeModal(nameModal))}>
                     <ModalHeader>

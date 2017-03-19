@@ -5,6 +5,7 @@ import ModalCreateProduct from './ModalCreateProduct';
 import ModalDeleteProduct from './ModalDeleteProduct';
 import ModalEditProduct from './ModalEditProduct';
 import ModalCreateInvoices from './ModalCreateInvoices';
+import ModalDeleteInvoice from './ModalDeleteInvoice';
 
 export {
     ModalCreateCustomer,
@@ -14,4 +15,5 @@ export {
     ModalDeleteProduct,
     ModalEditProduct,
     ModalCreateInvoices,
+    ModalDeleteInvoice
 };
